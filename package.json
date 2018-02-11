@@ -24,7 +24,6 @@
   "homepage": "https://github.com/piponsio/Apoche#readme",
   "dependencies": {
     "express": "^4.16.2",
-    "express-http-proxy": "^1.1.0",
     "http-proxy": "^1.16.2",
     "node-phpcgi": "^0.3.7"
   }
