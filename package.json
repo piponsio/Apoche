@@ -1,0 +1,31 @@
+{
+  "name": "apoche",
+  "version": "1.0.0",
+  "description": "Web Server in Node.js campatible with PHP",
+  "main": "Apoche.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piponsio/Apoche.git"
+  },
+  "keywords": [
+    "Web",
+    "Server",
+    "Node.js",
+    "PHP"
+  ],
+  "author": "piponsio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/piponsio/Apoche/issues"
+  },
+  "homepage": "https://github.com/piponsio/Apoche#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "express-http-proxy": "^1.1.0",
+    "http-proxy": "^1.16.2",
+    "node-phpcgi": "^0.3.7"
+  }
+}
