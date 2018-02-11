@@ -2,7 +2,6 @@ var httpProxy = require('http-proxy');
 
 var apiProxy = httpProxy.createProxyServer();
 
-var http = require("http");
 var fs = require("fs");
 
 var express = require('express');
@@ -15,7 +14,7 @@ var proxy_host;
 
 var webserver_path = 'C:/WebServer';
 var port = 80;
-var php = 'C:/php/php.exe'; //For Windows
+var php = 'C:/php/php-cgi.exe'; //For Windows
 
 var params;
 
