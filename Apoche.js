@@ -14,7 +14,7 @@ var proxy_host;
 
 var webserver_path = 'C:/WebServer';
 var port = 80;
-var php = 'C:/php/php-cgi.exe'; //For Windows
+var php = 'C:/php/php-cgi.exe'; //Example for Windows
 
 var params;
 
@@ -166,11 +166,7 @@ app.all('/*', function(req, res, next) {
 			  		proxyReq.path =  routes[index_routes].path_to_redirect;
 			  	}
 			});
-			apiProxy.web(req, res, { target: 'http://'+proxy_host });
-			
-			//
-
-						
+			apiProxy.web(req, res, { target: 'http://'+proxy_host });					
 		}	
 	}
 });	

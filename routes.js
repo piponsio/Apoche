@@ -2,9 +2,9 @@ var routes = [
 
 	{
 	"host":"localhost",
-	"port": 666,
-	"original_path": "/jadetest",
-	"path_to_redirect": "/", //redirect to localhost:666/
+	"port": 600,
+	"original_path": "/blog",
+	"path_to_redirect": "/",
 	"type":0
 	},
 	
@@ -12,8 +12,8 @@ var routes = [
 	{
 	"host":"localhost",
 	"port": 80,
-	"original_path": "/tiki",
-	"path_to_redirect": "/carpeta",
+	"original_path": "/VirtualDirectory1",
+	"path_to_redirect": "/folder",
 	"type":0
 	},
 	
@@ -21,7 +21,7 @@ var routes = [
 	{
 	"host":"localhost",
 	"port": 80,
-	"original_path": "/foto",
+	"original_path": "/img",
 	"path_to_redirect": "/1.jpg",
 	"type":1
 	}

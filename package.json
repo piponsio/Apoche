@@ -1,6 +1,6 @@
 {
   "name": "apoche",
-  "version": "1.0.0",
+  "version": "0.0.4",
   "description": "Web Server in Node.js campatible with PHP",
   "main": "Apoche.js",
   "scripts": {
