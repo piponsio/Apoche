@@ -3,27 +3,30 @@ var routes = [
 	{
 	"host":"localhost",
 	"port": 600,
-	"original_path": "/blog",
-	"path_to_redirect": "/",
-	"type":0
+	"virtual_path": "/blog",
+	"physical_path": "/"
 	},
 	
 
 	{
 	"host":"localhost",
 	"port": 80,
-	"original_path": "/VirtualDirectory1",
-	"path_to_redirect": "/folder",
-	"type":0
+	"virtual_path": "/VirtualDirectory1",
+	"physical_path": "/a"
 	},
-	
-	
+
 	{
 	"host":"localhost",
 	"port": 80,
-	"original_path": "/img",
-	"path_to_redirect": "/1.jpg",
-	"type":1
+	"virtual_path": "/img",
+	"physical_path": "/b/1.jpg"
+	},
+
+	{
+	"host":"localhost",
+	"port": 80,
+	"virtual_path": "/test/[0-9]+",
+	"physical_path": "/b/1.jpg"
 	}
 
 ];

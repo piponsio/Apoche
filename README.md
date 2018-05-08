@@ -1,9 +1,10 @@
-# Apoche 0.0.4
+# Apoche 0.0.5
 Apoche is a Web Server based in Node.js, compatible with PHP.
 Works on php and node.js projects at the same time without the need to install other programs. Choose your directories to publish, your version of php preferred and ready.
 
 ## Easy Routing
 Easily redirects one or more Node.js project, path to files, virtual directories and more. Only editing **/routes.js**
+Identify patterns in the route and redirectionals easily using regular expressions.
 
 ```
 var routes = [
@@ -11,35 +12,41 @@ var routes = [
 	{
 	"host":"localhost",
 	"port": 600,
-	"original_path": "/blog",
-	"path_to_redirect": "/",
+	"virtual_path": "/blog",
+	"physical_path": "/",
 	"type":0
 	},
-	
+	//Show in the path /blog the contents of a Node.js server in port 600
 
 	{
 	"host":"localhost",
 	"port": 80,
-	"original_path": "/VirtualDirectory1",
-	"path_to_redirect": "/folder",
-	"type":0
+	"virtual_path": "/VirtualDirectory1",
+	"physical_path": "/a"
 	},
-	
-	
+	//Redirect to other directory
+
 	{
 	"host":"localhost",
 	"port": 80,
-	"original_path": "/img",
-	"path_to_redirect": "/1.jpg",
-	"type":1
+	"virtual_path": "/img",
+	"physical_path": "/b/1.jpg"
+	},
+	//Redirect to a file
+
+	{
+	"host":"localhost",
+	"port": 80,
+	"virtual_path": "/test/[0-9]+",
+	"physical_path": "/b/1.jpg"
 	}
-
+	//Redirect with Regular Expression to image
 ];
 
 module.exports = routes;
 ```
 ## Coming soon ...
-* Redirects with Regular Expressions.
 * phpMyAdmin included.
 * Log Files.
 * Protected routes.
+* HTTPS and others protocol for redirections
