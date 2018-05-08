@@ -3,7 +3,7 @@ Apoche is a Web Server based in Node.js, compatible with PHP.
 Works on php and node.js projects at the same time without the need to install other programs. Choose your directories to publish, your version of php preferred and ready.
 
 ## Easy Routing
-Easily redirects one or more Node.js project, path to files, virtual directories and more. Only editing **/routes.js** .
+Easily redirects one or more Node.js project, path to files, virtual directories and more. Only editing **/routes.js** .  
 Identify patterns in the route and redirectionals easily using regular expressions.
 
 ```
