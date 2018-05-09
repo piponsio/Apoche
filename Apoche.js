@@ -1,9 +1,8 @@
+const config = require('./config.js');
+
 var httpProxy = require('http-proxy');
-
 var apiProxy = httpProxy.createProxyServer();
-
 var fs = require("fs");
-
 var express = require('express');
 var express = express();
 
@@ -13,14 +12,9 @@ var route;
 var proxy_host;
 var temp;
 
-var webserver_path = 'WebServer';
-var port = 80;
-var php = 'C:/php/php-cgi.exe'; //Example for Windows
-
-
 var middleware = require('node-phpcgi')({
-    documentRoot: webserver_path,
-    handler: php
+    documentRoot: config.webserver_path,
+    handler: config.php
 });
 
 var content_type = [
@@ -38,7 +32,7 @@ var format_type = {
 express.all('/*', function(req, res, next) {
 	
 	index_routes = undefined;
-	var path = webserver_path+"/"+req.params[0];	
+	var path = config.webserver_path+"/"+req.params[0];	
 
 	fs.readFile(path,function(err,data){
 
@@ -98,7 +92,7 @@ express.all('/*', function(req, res, next) {
 										fs.readdir(path,function(err,files){
 											if(err === null){
 												for(var i in files){
-													html_dir += '\n\t\t\t<li><a href="'+req.url+files[i]+'/">'+files[i];
+													html_dir += '\n\t\t\t<li><a href="'+req.url+files[i]+'">'+files[i];
 													html_dir+='</a></li>';
 												}																									
 											html_dir += '\n\t\t</ul>\n\t</body>\n</html>';						
@@ -126,7 +120,7 @@ express.all('/*', function(req, res, next) {
 							i=routes.length;
 						}		
 					}
-					fs.access(webserver_path+temp,function(err){
+					fs.access(config.webserver_path+temp,function(err){
 						if(err===null){
 							if(index_routes!==undefined){
 								route = routes[index_routes];
@@ -147,4 +141,4 @@ express.all('/*', function(req, res, next) {
 		}
 	});
 });	
-express.listen(port);
+express.listen(config.port);
