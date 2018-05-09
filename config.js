@@ -2,7 +2,8 @@ exports.webserver_path = './WebServer';
 exports.port = 80;
 exports.php = "C:/php/php-cgi.exe";
 
-/*	EXAMPLES AND EXPLAINS
+/*
+EXAMPLES AND EXPLAINS
 
 exports.webserver_path = './WebServer';
 

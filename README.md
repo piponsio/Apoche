@@ -1,4 +1,4 @@
-# Apoche 0.0.5
+# Apoche 0.0.6
 Apoche is a Web Server based in Node.js, compatible with PHP.
 Works on php and node.js projects at the same time without the need to install other programs. Choose your directories to publish, your version of php preferred and ready.
 
@@ -13,7 +13,8 @@ exports.webserver_path = './WebServer';
 exports.port = 80;
 exports.php = "C:/php/php-cgi.exe";
 
-/*	EXAMPLES AND EXPLAINS
+/*
+EXAMPLES AND EXPLAINS
 
 exports.webserver_path = './WebServer';
 
@@ -37,7 +38,7 @@ exports.php = ""; //Example for Linux
 
 ### Installation of php for Windows.
 
-Documentation and downloads in: https://windows.php.net/.
+Documentation and downloads in: https://windows.php.net/.  
 *Note: Don't forget to install the necessary version of visual c++ for your chosen php version.*
 
 ### Installation of php for Linux.
