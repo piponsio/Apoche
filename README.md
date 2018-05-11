@@ -22,7 +22,7 @@ exports.root_directory = './www';
 //For default this directory is inside of Apache directory, but is possible choose other path.
 //Example for Windows: "C:/www".
 //Example for Linux: 
-//Example for all: "./wwwr".
+//Example for all: "./www".
 
 exports.port = 80;
 
