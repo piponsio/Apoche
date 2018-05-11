@@ -5,7 +5,7 @@ exports.php = "C:/php/php-cgi.exe";
 /*
 EXAMPLES AND EXPLAINS
 
-exports.root_directory = './WebServer';
+exports.root_directory = './www';
 
 //Website root directory is is the content that is loaded when visitors enter your domain name in a web browser.
 //For default this directory is inside of Apache directory, but is possible choose other path.
