@@ -1,4 +1,4 @@
-# Apoche 0.0.6
+# Apoche 0.0.7
 Apoche is a Web Server based in Node.js, compatible with PHP.
 Works on php and node.js projects at the same time without the need to install other programs. Choose your directories to publish, your version of php preferred and ready.
 
@@ -9,20 +9,20 @@ The configuration of Apoche is very simple, so do not be afraid as it will still
 The config is the 3 lines of **config.js**
 
 ```
-exports.webserver_path = './WebServer';
+exports.root_directory = './www';
 exports.port = 80;
 exports.php = "C:/php/php-cgi.exe";
 
 /*
 EXAMPLES AND EXPLAINS
 
-exports.webserver_path = './WebServer';
+exports.root_directory = './WebServer';
 
 //Website root directory is is the content that is loaded when visitors enter your domain name in a web browser.
 //For default this directory is inside of Apache directory, but is possible choose other path.
-//Example for Windows: "C:/WebServer".
+//Example for Windows: "C:/www".
 //Example for Linux: 
-//Example for all: "./WebServer".
+//Example for all: "./wwwr".
 
 exports.port = 80;
 
@@ -32,7 +32,6 @@ exports.php = 'C:/php/php-cgi.exe'; //Example for Windows
 exports.php = ""; //Example for Linux
 
 //Path of php-cgi
-
 */
 ```
 
@@ -53,44 +52,44 @@ Identify patterns in the route and redirectionals easily using regular expressio
 var routes = [
 
 	{
+	"virtual_path": "/blog",
+	"root_directory": "",
 	"host":"localhost",
 	"port": 600,
-	"virtual_path": "/blog",
-	"physical_path": "/",
-	"type":0
+	"physical_path": "/"
 	},
-	//Show in the path /blog the contents of a Node.js server in port 600
+	
 
 	{
-	"host":"localhost",
-	"port": 80,
 	"virtual_path": "/VirtualDirectory1",
-	"physical_path": "/a"
-	},
-	//Redirect to other directory
-
-	{
+	"root_directory": "",
 	"host":"localhost",
 	"port": 80,
+	"physical_path": "/examples/a"
+	},
+
+	{
 	"virtual_path": "/img",
-	"physical_path": "/b/1.jpg"
-	},
-	//Redirect to a file
-
-	{
+	"root_directory": "",
 	"host":"localhost",
 	"port": 80,
+	"physical_path": "/examples/b/1.jpg"
+	},
+
+	{
 	"virtual_path": "/test/[0-9]+",
+	"root_directory": ".www/examples",
+	"host":"localhost",
+	"port": 80,
 	"physical_path": "/b/1.jpg"
 	}
-	//Redirect with Regular Expression to image
+
 ];
 
 module.exports = routes;
 ```
 ## Coming soon ...
 * Manual of install of Linux.
-* Choose other Website directory root in routes.js.
 * Easy installer for windows and linux.
 * Connection with Mysql 8.0 Sql & NoSql.
 * phpMyAdmin included.

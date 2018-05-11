@@ -13,7 +13,7 @@ var proxy_host;
 var temp;
 
 var middleware = require('node-phpcgi')({
-    documentRoot: config.webserver_path,
+    documentRoot: config.root_directory,
     handler: config.php
 });
 
@@ -32,7 +32,8 @@ var format_type = {
 express.all('/*', function(req, res, next) {
 	
 	index_routes = undefined;
-	var path = config.webserver_path+"/"+req.params[0];	
+
+	var path = config.root_directory+"/"+req.params[0];	
 
 	fs.readFile(path,function(err,data){
 
@@ -120,7 +121,14 @@ express.all('/*', function(req, res, next) {
 							i=routes.length;
 						}		
 					}
-					fs.access(config.webserver_path+temp,function(err){
+					var temp2;
+					if(index_routes!==undefined && routes[index_routes].root_directory!==''){
+						temp2 = routes[index_routes].root_directory+temp; 
+					}
+					else{
+						temp2=config.root_directory+temp;
+					}
+					fs.access(temp2,function(err){
 						if(err===null){
 							if(index_routes!==undefined){
 								route = routes[index_routes];

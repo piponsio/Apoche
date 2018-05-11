@@ -1,31 +1,35 @@
 var routes = [
 
 	{
+	"virtual_path": "/blog",
+	"root_directory": "",
 	"host":"localhost",
 	"port": 600,
-	"virtual_path": "/blog",
 	"physical_path": "/"
 	},
 	
 
 	{
-	"host":"localhost",
-	"port": 80,
 	"virtual_path": "/VirtualDirectory1",
-	"physical_path": "/a"
+	"root_directory": "",
+	"host":"localhost",
+	"port": 80,
+	"physical_path": "/examples/a"
 	},
 
 	{
-	"host":"localhost",
-	"port": 80,
 	"virtual_path": "/img",
-	"physical_path": "/b/1.jpg"
+	"root_directory": "",
+	"host":"localhost",
+	"port": 80,
+	"physical_path": "/examples/b/1.jpg"
 	},
 
 	{
+	"virtual_path": "/test/[0-9]+",
+	"root_directory": ".www/examples",
 	"host":"localhost",
 	"port": 80,
-	"virtual_path": "/test/[0-9]+",
 	"physical_path": "/b/1.jpg"
 	}
 
