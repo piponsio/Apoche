@@ -1,14 +1,13 @@
 # Apoche 0.0.8
 Apoche is a Web Server based in Node.js, compatible with PHP. Work with php and node.js projects or others web servers at the same time and easily. Choose your version of php preferred and ready.  
 
-Easy routing with virtual directorys and/or regular expressions.
+Easy routing with virtual directorys and/or regular expressions.  
 Multi root directory.
 
 ## First use of Apoche.
 The configuration of Apoche is very simple, so do not be afraid as it will still be explained step by step. Let's start.  
 
-### Config.
-The config is the 4 lines.  
+### Configuration, explanations and examples.
 **Example of /config.js**
 
 ```
@@ -17,8 +16,6 @@ exports.host = "localhost";
 exports.port = 80;
 exports.php = "C:/php/php-cgi.exe";
 ```
-
-Explains and Examples  
 
 **exports.root_directory** is Website root directory is is the content that is loaded when visitors enter your domain name in a web browser.  
 For default this directory is inside of Apoche directory, but is possible choose other path.
@@ -36,7 +33,7 @@ For default this directory is inside of Apoche directory, but is possible choose
 **exports.php** is the path of php-cgi
 
 	exports.php = 'C:/php/php-cgi.exe'; //Example for Windows  
-	exports.php = ""; 			//Example for Linux  
+	exports.php = ""; 		//Example for Linux  
 
 ### Installation of php for Windows.
 
@@ -98,6 +95,7 @@ The variable routes is a array of JSON.
 **"host"** is the host of routing or redirection.
 This is optional, if this not exist or is empty will take a value of config.host(Default host of server).
 
+
 **"port"** is the listen port of routing/redirection, internal or external.
 Is possible create a routing using virtual paths if host and port are the same of config.host (Default host of server) and config.port (Default port of server).  
 
@@ -106,17 +104,17 @@ Is possible redirect a virtual path to physical path in other web server created
 If the other web server is off, Apoche will fail.  
 This is optional, if this not exist or is empty will take a value of config.port(Default port of server).  
 
-**root_directory** each route can have a own root directory.  
 
+**root_directory** each route can have a own root directory.  
 This is optional, if this not exist or is empty will take a value of config.root_directory(Default root directory of server).  
 
-**"virtual_path"** is the virtual path with which you enter from the address bar.  
 
+**"virtual_path"** is the virtual path with which you enter from the address bar.  
 If this path exist(virtual_path is a real path), the preference will be given to the existing. Accessing to file or directory.  
 
 Is possible use Regular Expressions in part or totally of virtual path.  
-
 This is required, NO optional. if this not exist or is empty the server will show a "Routing Error" instead of "Error 404".  
+
 
 **"physical_path"** is a physical path to routing or redirect.  
 
