@@ -1,13 +1,15 @@
 # Apoche 0.0.8
-Apoche is a Web Server based in Node.js, compatible with PHP.
-Works on php and node.js projects at the same time without the need to install other programs. Choose your directories to publish, your version of php preferred and ready.
+Apoche is a Web Server based in Node.js, compatible with PHP. Work with php and node.js projects or others web servers at the same time and easily. Choose your version of php preferred and ready.  
+
+Easy routing with virtual directorys and/or regular expressions.
+Multi root directory.
 
 ## First use of Apoche.
 The configuration of Apoche is very simple, so do not be afraid as it will still be explained step by step. Let's start.  
 
 ### Config.
 The config is the 4 lines.  
-Example of **/config.js**
+**Example of /config.js**
 
 ```
 exports.root_directory = './www';
@@ -16,19 +18,25 @@ exports.port = 80;
 exports.php = "C:/php/php-cgi.exe";
 ```
 
+Explains and Examples  
+
+**exports.root_directory** is Website root directory is is the content that is loaded when visitors enter your domain name in a web browser.  
+For default this directory is inside of Apoche directory, but is possible choose other path.
+
 	exports.root_directory = "C:/www";	 //Example for Windows  
 	exports.root_directory = "";		 //Example for Linux  
 	exports.root_directory = "./www";	 //Example for all  
-Website root directory is is the content that is loaded when visitors enter your domain name in a web browser.  
-For default this directory is inside of Apoche directory, but is possible choose other path.
+**exports.host**
 
-	exports.host = "localhost"; //Example of Server Host  
+	exports.host = "localhost"; //Example of Server Host.
+**exports.port** is a server listening port. The port number 80 is the port default in the web browsers.
 
-	exports.port = 80; //Example of Server listening port (80 is the port default in the web browsers).  
+	exports.port = 80; //Example of Server listening port.  
+
+**exports.php** is the path of php-cgi
 
 	exports.php = 'C:/php/php-cgi.exe'; //Example for Windows  
-	exports.php = ""; 					//Example for Linux  
-Path of php-cgi
+	exports.php = ""; 			//Example for Linux  
 
 ### Installation of php for Windows.
 
@@ -76,8 +84,6 @@ var routes = [
 	"physical_path": "/$1"
 	}
 	//Internal routing using Regular Expression. 
-	//For more info of Regular Expression 
-	//(https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
 ];
 
 module.exports = routes;
@@ -85,7 +91,7 @@ module.exports = routes;
 
 The variable routes is a array of JSON.
 
-	"host":"localhost" 			//Example of internal routing.  
+	"host":"localhost" 		//Example of internal routing.  
 	"host":"192.168.0.55"		//Example of internal routing or internal net redirection.  
 	"host":"www.example.com"	//Example of external redirection.  
 
@@ -115,6 +121,7 @@ This is required, NO optional. if this not exist or is empty the server will sho
 **"physical_path"** is a physical path to routing or redirect.  
 
 Is possible use a literal expression or use the regular expression memory to change data format.  
+For more info of Regular Expression (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp).
 
 ## Coming soon ...
 * Manual of install of Linux.
