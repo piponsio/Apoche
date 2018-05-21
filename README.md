@@ -25,14 +25,14 @@ For default this directory is inside of Apoche directory, but is possible choose
 	exports.root_directory = "./www";	 //Example for all  
 **exports.host**
 
-	exports.host = "localhost"; //Example of Server Host.
+	exports.host = "localhost"; //Example of Server Host
 **exports.port** is a server listening port. The port number 80 is the port default in the web browsers.
 
-	exports.port = 80; //Example of Server listening port.  
+	exports.port = 80; //Example of Server listening port  
 
-**exports.php** is the path of php-cgi
+**exports.php** is the path of php-cgi.
 
-	exports.php = 'C:/php/php-cgi.exe'; //Example for Windows  
+	exports.php = 'C:/php/php-cgi.exe'; 	//Example for Windows  
 	exports.php = ""; 			//Example for Linux  
 
 ### Installation of php for Windows.
@@ -110,15 +110,14 @@ This is optional, if this not exist or is empty will take a value of config.root
 
 **"virtual_path"** is the virtual path with which you enter from the address bar.  
 If this path exist (virtual_path is a real path), the preference will be given to the existing. Accessing to file or directory.  
-
 Is possible use Regular Expressions in part or totally of virtual path.  
 This is required, NO optional. if this not exist or is empty the server will show a "Routing Error" instead of "Error 404".  
 
 
 **"physical_path"** is a physical path to routing or redirect.  
-
 Is possible use a literal expression or use the regular expression memory to change data format.  
-For more info of Regular Expression (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp).
+For more info of Regular Expression:  
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp.
 
 ## Coming soon ...
 * Manual of install of Linux.
