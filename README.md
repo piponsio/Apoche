@@ -1,4 +1,4 @@
-# Apoche 0.0.8
+# Apoche 0.0.9
 Apoche is a Web Server based in Node.js, compatible with PHP. Work with php and node.js projects or others web servers at the same time and easily. Choose your version of php preferred and ready.  
 
 Easy routing with virtual directorys and/or regular expressions.  
@@ -99,10 +99,8 @@ This is optional, if this not exist or is empty will take a value of config.host
 **"port"** is the listen port of routing/redirection, internal or external.
 Is possible create a routing using virtual paths if host and port are the same of config.host (Default host of server) and config.port (Default port of server).  
 Is possible redirect a virtual path to physical path in other web server created in Node.js, Nginx, Apoche or others that start with "Ap" and end with "che" just is need a not use a same ports.  
-
-If the other web server is off, Apoche will fail.  
+  
 This is optional, if this not exist or is empty will take a value of config.port (Default port of server).  
-
 
 **root_directory** each route can have a own root directory.  
 This is optional, if this not exist or is empty will take a value of config.root_directory (Default root directory of server).  
@@ -111,8 +109,6 @@ This is optional, if this not exist or is empty will take a value of config.root
 **"virtual_path"** is the virtual path with which you enter from the address bar.  
 If this path exist (virtual_path is a real path), the preference will be given to the existing. Accessing to file or directory.  
 Is possible use Regular Expressions in part or totally of virtual path.  
-This is required, NO optional. if this not exist or is empty the server will show a "Routing Error" instead of "Error 404".  
-
 
 **"physical_path"** is a physical path to routing or redirect.  
 Is possible use a literal expression or use the regular expression memory to change data format.  

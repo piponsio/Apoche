@@ -25,7 +25,7 @@ var format_type = {
 
 function explorer(req,res,route){
 	var root_directory = config.root_directory;
-	var params = req.params[0];
+	var params = "/"+req.params[0];
 	var path = root_directory+"/"+req.params[0];	
 
 	if(route!==undefined){
@@ -44,11 +44,8 @@ function explorer(req,res,route){
 	    documentRoot: root_directory,
 	    handler: config.php
 	});
-
 	fs.readFile(path,function(err,data){
-
 		if(err === null){
-
 			dir = path.split("/");
 			archive = dir[dir.length-1];
 			format = archive.split(".");
@@ -67,15 +64,17 @@ function explorer(req,res,route){
 		}
 		else{
 			fs.stat(path, function(err,stats){
-			
 				if(err === null){
-					
 					if(stats.isDirectory()){
-
+						if(path[path.length-1]!="/"){
+							path += "/";
+						}
+						if(params[params.length-1]!="/"){
+							params += "/";
+						}
 						fs.access(path+"index.php",function(err){
 							if(err === null){
-								
-								req.url=params;
+								req.url = params;
 								req.url += "index.php";
 								middleware(req, res);
 							}
@@ -86,26 +85,62 @@ function explorer(req,res,route){
 										res.send(data);
 									}
 									else{
-										res.set('Content-Type', 'text/html');
-										var html_dir = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">\n<html>\n\t<head>\n\t\t<title>Index of /'+req.params[0]+'</title>\n\t\t</head>\n\t<body>\n\t\t<h1>Index of /'+req.params[0]+'</h1>\n\t\t<ul>';
-										if(req.params[0]!=''){
-											html_dir += '\n\t\t\t<li><a href="'+req.url+'..">Parent Directory</a></li>';
+										var getFiles = function(rootDir, cb) { 
+										    fs.readdir(rootDir, function(err, files) { 
+										        var files_temp = []; 
+										        var index_temp = [];
+										        var final_files = [];
+										        var count = 0;
+										        if(files.length>0){
+													for (var index = 0; index < files.length; ++index) { 
+											            var file = files[index]; 
+										                var filePath = rootDir + '/' + file; 
+										                fs.stat(filePath, function(err, stat) {
+										                    if (stat.isDirectory()) { 
+										                        files_temp.push(this.file+"/"); 
+										                    }
+										                    else{
+											               		files_temp.push(this.file);
+											            	}
+											            	index_temp.push(this.index);
+										                    if(files_temp.length==files.length) {
+
+											                    while(count<index_temp.length){
+																	index_temp.forEach(function(item,index,array){
+																		if(count==item){
+																			final_files.push(files_temp[index]);
+																			count++;
+																		}	
+											                    	});
+											                    }
+										                    	return cb(final_files); 
+										                    } 
+										                }.bind({index: index, file: file})); 
+											        }
+										        }
+										        else{
+										        	return cb(final_files);
+										        }
+										    });
 										}
-										
-										fs.readdir(path,function(err,files){
-											if(err === null){
-												for(var i in files){
-													html_dir += '\n\t\t\t<li><a href="'+req.url+files[i]+'">'+files[i];
-													html_dir+='</a></li>';
-												}																									
-											html_dir += '\n\t\t</ul>\n\t</body>\n</html>';						
-											res.send(html_dir);
+										getFiles(path,function(files){
+											if(req.url[req.url.length-1]!="/"){
+												req.url+="/";
 											}
+											res.set('Content-Type', 'text/html');
+											var html_dir = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">\n<html>\n\t<head>\n\t\t<title>Index of /'+req.params[0]+'</title>\n\t\t</head>\n\t<body>\n\t\t<h1>Index of /'+req.params[0]+'</h1>\n\t\t<ul>';
+											if(req.params[0]!=''){
+												html_dir += '\n\t\t\t<li><a href="'+req.url+'..">Parent Directory</a></li>';
+											}
+											for(var i in files){
+												html_dir += '\n\t\t\t<li><a href="'+req.url+files[i]+'">'+files[i]+'</a></li>';
+											}
+											html_dir += '\n\t\t</ul>\n\t</body>\n</html>';	
+											res.send(html_dir);
 										});
 									}
 								});
 							}
-
 						});
 					}
 				}
@@ -144,12 +179,21 @@ function explorer(req,res,route){
 									apiProxy.on('proxyReq', function (proxyReq, req, res, options) {
 								  		proxyReq.path=temp;
 									});
-									apiProxy.web(req, res, { target: 'http://'+proxy_host });	
+									apiProxy.web(req, res, { target: 'http://'+proxy_host },function(e){
+										res.set('Content-Type', 'text/html');
+										res.send("<h1>Error404</h1>");	
+									});	
 								}						
 							}
 							else{
-								res.set('Content-Type', 'text/html');
-								res.send("<h1>Routing Error</h1>");		
+								proxy_host = routes[index_routes].host+":"+routes[index_routes].port;					
+									apiProxy.on('proxyReq', function (proxyReq, req, res, options) {
+								  		proxyReq.path=temp;
+									});
+									apiProxy.web(req, res, { target: 'http://'+proxy_host },function(e){
+										res.set('Content-Type', 'text/html');
+										res.send("<h1>Error404</h1>");	
+								});		
 							}		
 						});	
 					}
